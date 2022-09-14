@@ -1,31 +1,31 @@
 import React, { useState } from "react";
 import GetFive from "./GetFive.js";
+import { Button } from "reactstrap";
 
 function LocateMe() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [posLatitude, setPosLatitude] = useState(false);
   const [posLongitude, setPosLongitude] = useState(false);
+  const [showFive, setShowFive] = useState(false);
+
+  const toggleShow = () => {
+    setShowFive(!showFive);
+  };
   const geoFindMe = () => {
     const status = document.querySelector("#status");
-    const currentLatitude = document.querySelector("#current-latitude");
-    const currentLongitude = document.querySelector("#current-longitude");
 
     function success(position) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
       setPosLatitude(latitude);
       setPosLongitude(longitude);
-      status.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
+      status.textContent = `Your retrieved coordinates are :
+      latitude: ${latitude} ° and longitude: ${longitude} °`;
       setIsSuccess(true);
     }
 
     function error() {
       status.textContent = "Unable to retrieve your location";
-      // default Lisbon: 38.736946, -9.142685.
-      const defaultlLtitude = 38.736946;
-      const defaultLongitude = -9.142685;
-      currentLatitude.textContent = `The default latitude is: ${defaultlLtitude} °`;
-      currentLongitude.textContent = `The default longitude is: ${defaultLongitude} °`;
     }
 
     if (!navigator.geolocation) {
@@ -35,27 +35,40 @@ function LocateMe() {
       navigator.geolocation.getCurrentPosition(success, error);
     }
   };
-  const showMeFive = () => {};
 
   return (
     <div>
-      <button id="find-me" onClick={geoFindMe}>
+      <h3 className="text-start mb-2 mt-2 mx-2">Instructions</h3>
+      <p className="text-start mb-2 mt-2 mx-2">
+        Please click the "locate me" button to get started
+      </p>
+      <Button
+        id="find-me"
+        onClick={geoFindMe}
+        color="primary"
+        className="mt-2 mb-2"
+      >
         Locate me
-      </button>
+      </Button>
       <br />
       <p id="status"></p>
       <p id="current-latitude"></p>
       <p id="current-longitude"></p>
       {isSuccess ? (
         <>
-          <button id="show-me-five" onClick={showMeFive}>
-            Show me the nearest 5 boutiques
-          </button>
-          <GetFive posLat={posLatitude} posLon={posLongitude} />
+          <Button
+            id="show-me-five"
+            onClick={toggleShow}
+            color="primary"
+            className="mt-2 mb-2"
+          >
+            {showFive ? "Hide" : "Show me the nearest 5 boutiques"}
+          </Button>
         </>
       ) : (
-        <>***</>
+        ""
       )}
+      {showFive && <GetFive posLat={posLatitude} posLon={posLongitude} />}
     </div>
   );
 }
