@@ -1,4 +1,4 @@
-//https://www.digitalocean.com/community/tutorials/react-axios-react
+/* //https://www.digitalocean.com/community/tutorials/react-axios-react
 import React from "react";
 import axios from "axios";
 
@@ -31,3 +31,4 @@ export default class BoutiqueList extends React.Component {
     );
   }
 }
+ */

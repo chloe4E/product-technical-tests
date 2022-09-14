@@ -7,7 +7,6 @@ export default function BoutiqueCard(props) {
     console.log("in display boutique", boutiqueData.boutiques.length);
     if (boutiqueData) {
       return boutiqueData.boutiques.map((boutique, index) => {
-        console.log(boutique);
         return (
           <div className="boutique-card" key={boutique._id}>
             <h3>{boutique.name}</h3>
@@ -19,5 +18,6 @@ export default function BoutiqueCard(props) {
       return <p>No identified boutique yet</p>;
     }
   };
+
   return <>{displayBoutiques(props)}</>;
 }

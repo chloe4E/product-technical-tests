@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import GetFive from "./GetFive.js";
 
 function LocateMe() {
-  const [isSucess, setIsSuccess] = useState(false);
-
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [posLatitude, setPosLatitude] = useState(false);
+  const [posLongitude, setPosLongitude] = useState(false);
   const geoFindMe = () => {
     const status = document.querySelector("#status");
     const currentLatitude = document.querySelector("#current-latitude");
@@ -11,6 +13,8 @@ function LocateMe() {
     function success(position) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
+      setPosLatitude(latitude);
+      setPosLongitude(longitude);
       status.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
       setIsSuccess(true);
     }
@@ -42,11 +46,12 @@ function LocateMe() {
       <p id="status"></p>
       <p id="current-latitude"></p>
       <p id="current-longitude"></p>
-      {isSucess ? (
+      {isSuccess ? (
         <>
           <button id="show-me-five" onClick={showMeFive}>
             Show me the nearest 5 boutiques
           </button>
+          <GetFive posLat={posLatitude} posLon={posLongitude} />
         </>
       ) : (
         <>***</>
