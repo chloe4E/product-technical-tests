@@ -9,7 +9,8 @@ Following the provided [brief](https://github.com/Trouva/product-technical-tests
 It took me approximatively 4 hours to develop this project. <br>
 I started with connecting to the two APIs as this was the base of the project. <br>
 Once this was achieved, I thought about the structure of the App and implemented it. <br>Afterwards I worked on the function to compute the distance between the boutiques and the location of the user. I reached a working prototype which I refactored slightly.<br>
-Finally I minimally styled the App with Boostrap. As this is a PoC, the App is not deployed.
+Finally I minimally styled the App with Boostrap. <br>
+As this is a PoC, the App is not deployed and runs in development mode.
 <br>
 
 <br>
@@ -46,7 +47,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 - I lost a lot of time with the BoutiqueCard component as I struggled to use my props correctly.
 - I would try to use a store for the data to avoid props drilling for the location of the user.
-- I would try to use Typescript
+- I would try to use Typescript.
 
 ## Links
 

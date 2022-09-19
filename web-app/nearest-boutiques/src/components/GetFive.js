@@ -35,11 +35,11 @@ function GetFive(props) {
   //// =========////
   // compute distance:
   function distance(lat1, lon1, lat2, lon2) {
-    var radlat1 = (Math.PI * lat1) / 180;
-    var radlat2 = (Math.PI * lat2) / 180;
-    var theta = lon1 - lon2;
-    var radtheta = (Math.PI * theta) / 180;
-    var dist =
+    let radlat1 = (Math.PI * lat1) / 180;
+    let radlat2 = (Math.PI * lat2) / 180;
+    let theta = lon1 - lon2;
+    let radtheta = (Math.PI * theta) / 180;
+    let dist =
       Math.sin(radlat1) * Math.sin(radlat2) +
       Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
     if (dist > 1) {
@@ -54,7 +54,7 @@ function GetFive(props) {
   let fiveList = [];
   let distBout = () => {
     if (!loading) {
-      for (var i = 0; i < boutiqueList.boutiques.length; i++) {
+      for (let i = 0; i < boutiqueList.boutiques.length; i++) {
         boutiqueList.boutiques[i].dist = distance(
           posLat,
           posLon,
