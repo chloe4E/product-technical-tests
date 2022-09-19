@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import BoutiqueCard from "./BoutiqueCard.js";
 import axios from "axios";
 import Card from "react-bootstrap/Card";
 import { Button } from "reactstrap";
+
+import BoutiqueCard from "./BoutiqueCard.js";
 
 function GetFive(props) {
   const [boutiqueList, setBoutiqueList] = useState([]);
@@ -74,7 +75,7 @@ function GetFive(props) {
 
   const listItems = fiveList.map((d) => (
     <>
-      <Card body key={d.name}>
+      <Card body key={d.name} className="mb-2">
         <Card.Title>{d.name}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted fst-italic fw-light">
           {d.founder_quote}

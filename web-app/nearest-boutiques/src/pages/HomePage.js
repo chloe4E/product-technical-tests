@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import GetFive from "./GetFive.js";
 import { Button } from "reactstrap";
 
-function LocateMe() {
+import GetFive from "../components/GetFive";
+
+function HomePage() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [posLatitude, setPosLatitude] = useState(false);
   const [posLongitude, setPosLongitude] = useState(false);
@@ -73,4 +74,4 @@ function LocateMe() {
   );
 }
 
-export default LocateMe;
+export default HomePage;
